@@ -7,7 +7,7 @@ export interface Song {
   artist: string;
   title: string;
   level: number;
-  image: string;
+  images: string;
 }
 
 interface SongItemProps {
@@ -29,7 +29,7 @@ export const SongItem: React.FC<SongItemProps> = ({
 
   return (
     <article className="song-item">
-      <img src={song.image} alt={`${song.title} album cover`} />
+      <img src={song.images} alt={`${song.title} album cover`} />
       <div className="song-info">
         <h3>{song.title}</h3>
         <p>{song.artist}</p>

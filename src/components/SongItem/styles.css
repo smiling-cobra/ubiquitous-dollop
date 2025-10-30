@@ -1,0 +1,143 @@
+.song-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: #101010;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.song-item:hover {
+  background-color: #1a1a1a;
+}
+
+.song-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.song-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.song-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-overflow: ellipsis;
+}
+
+.song-info p {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  color: #939393;
+  text-overflow: ellipsis;
+}
+
+.level-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  position: relative;
+  background-color: #000000;
+  border: 3px solid currentColor;
+}
+
+.level-badge.green {
+  color: #6fc13e;
+}
+
+.level-badge.orange {
+  color: #ff8e00;
+}
+
+.level-badge.red {
+  color: #dc001c;
+}
+
+.favorite-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #939393;
+  transition: color 0.2s ease, transform 0.1s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.favorite-btn:hover {
+  color: #dc001c;
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #dc001c;
+}
+
+.favorite-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  .song-item {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .song-item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .song-info h3 {
+    font-size: 1.125rem;
+  }
+
+  .song-info p {
+    font-size: 1rem;
+  }
+
+  .level-badge {
+    width: 48px;
+    height: 48px;
+    font-size: 1.125rem;
+  }
+
+  .favorite-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .favorite-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .song-item {
+    padding: 1.25rem;
+  }
+}
