@@ -1,0 +1,84 @@
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: image-set(url('../../assets/yousician-hero-mobile.png') 1x,
+            url('../../assets/yousician-hero-mobile@2x.png') 2x,
+            url('../../assets/yousician-hero-mobile@3x.png') 3x) center/cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.hero h1 {
+    margin: 0 0 1rem;
+    letter-spacing: 0.03em;
+    font-size: clamp(1.4rem, 5vw, 3rem);
+}
+
+.hero p {
+    line-height: normal;
+    font-size: clamp(1.3rem, 2vw, 1.5rem);
+    margin: 0 0 1.5rem;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 20px var(--color-black);
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--color-gray-dark);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-bar input::placeholder {
+    color: var(--color-gray-medium);
+}
+
+.search-bar button {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .search-bar {
+        max-width: 100%;
+    }
+}
