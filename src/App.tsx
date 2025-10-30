@@ -1,13 +1,50 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Main from './view/Main'
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Hero } from './components/Hero';
+import { FilterBar } from './components/Filter';
+import { SongList } from './components/SongList';
+import { useSongs } from './services/useSongs';
+import { useFavorites } from './services/useFavorites';
+import './App.css';
 
-function App() {
-  const queryClient = new QueryClient()
+const queryClient = new QueryClient();
+
+const Content = () => {
+  const [search, setSearch] = useState('');
+  const [selectedLevels, setSelectedLevels] = useState<number[]>([]);
+  const [filterOpen, setFilterOpen] = useState(false);
+
+  const { data, fetchNextPage, hasNextPage, isLoading } = useSongs(search, selectedLevels);
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  const songs = data?.pages.flatMap(page => page.songs) ?? [];
+  const favoriteSet = new Set(songs.filter(s => isFavorite(s.id)).map(s => s.id));
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Main />
-    </QueryClientProvider>
-  )
+    <div className="app">
+      <Hero onSearch={setSearch} searchQuery={search} />
+      <FilterBar
+        selectedLevels={selectedLevels}
+        onLevelsChange={setSelectedLevels}
+        isOpen={filterOpen}
+        onToggle={() => setFilterOpen(!filterOpen)}
+      />
+      <SongList
+        songs={songs}
+        favorites={favoriteSet}
+        onToggleFavorite={toggleFavorite}
+        onLoadMore={() => fetchNextPage()}
+        hasMore={!!hasNextPage}
+        isLoading={isLoading}
+      />
+    </div>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Content />
+    </QueryClientProvider>
+  );
+}
