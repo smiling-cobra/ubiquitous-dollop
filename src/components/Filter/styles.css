@@ -1,0 +1,103 @@
+.filter-bar {
+  padding: 0 1rem;
+  background-color: #000000;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-filters {
+  display: grid;
+  grid-template-columns: repeat(5, min-content);
+  gap: 1rem;
+  max-width: 600px;
+  justify-content: center;
+  padding: 1rem 0 1.5rem;
+}
+
+.level-filters button {
+  border: none;
+  background: none;
+  width: fit-content;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+  border: none;
+  background: none;
+  width: fit-content;
+}
+
+.filter-toggle-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.filter-toggle-icon-wrapper.active {
+  gap: 0.5rem;
+  padding: 0 0 0 1rem;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+}
+
+.filter-range {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.filter-toggle-icon-wrapper > div {
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.filter-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.filter-icon img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  display: block;
+  transition: filter 0.2s ease;
+}
+
+.filter-toggle-icon-wrapper.active .filter-icon {
+  background-color: #ffffff;
+}
+
+.filter-toggle-icon-wrapper.active .filter-icon img {
+  filter: none;
+}
+
+@media (min-width: 768px) {}
+@media (min-width: 1024px) {}

@@ -1,60 +1,88 @@
-import React from 'react';
-import filterIcon from '../../assets/icons/filter.svg';
-import './styles.css';
+import React from "react";
+import filterIcon from "../../assets/icons/filter.svg";
+import LevelIndicator from "../LevelIndicator";
+import "./styles.css";
+
+enum FilterStatus {
+  OPENED = "HIDE FILTER",
+  CLOSED = "FILTER BY LEVEL",
+}
+
+export const LEVELS_TOTAL = 15;
 
 interface FilterBarProps {
-  selectedLevels: number[];
-  onLevelsChange: (levels: number[]) => void;
   isOpen: boolean;
   onToggle: () => void;
+  selectedLevels: number[];
+  onLevelsChange: (levels: number[]) => void;
 }
 
 export const FilterBar: React.FC<FilterBarProps> = ({
-  selectedLevels,
-  onLevelsChange,
   isOpen,
   onToggle,
+  selectedLevels,
+  onLevelsChange,
 }) => {
-  const levels = Array.from({ length: 15 }, (_, i) => i + 1);
+  const levels = React.useMemo(() => {
+    return Array.from({ length: LEVELS_TOTAL }, (_, i) => i + 1);
+  }, []);
 
-  const toggleLevel = (level: number) => {
-    if (selectedLevels.includes(level)) {
-      onLevelsChange(selectedLevels.filter(l => l !== level));
-    } else {
-      onLevelsChange([...selectedLevels, level]);
-    }
+  const toggleLevel = React.useCallback(
+    (level: number) => {
+      if (selectedLevels.includes(level)) {
+        onLevelsChange(selectedLevels.filter(l => l !== level));
+      } else {
+        onLevelsChange([...selectedLevels, level]);
+      }
+    },
+    [onLevelsChange, selectedLevels]
+  );
+
+    const getSelectedRange = () => {
+    if (selectedLevels.length === 0) return null;
+    if (selectedLevels.length === 1) return selectedLevels[0];
+
+    const sorted = [...selectedLevels].sort((a, b) => a - b);
+    return `${sorted[0]} - ${sorted[sorted.length - 1]}`;
   };
 
-  const getLevelColor = (level: number) => {
-    if (level <= 5) return 'green';
-    if (level <= 10) return 'orange';
-    return 'red';
-  };
+  const hasSelectedLevels = selectedLevels.length > 0;
+  const showRangePill = hasSelectedLevels && !isOpen;
+  const selectedRange = getSelectedRange();
+
 
   return (
-    <div className="filter-bar">
+    <section className="filter-bar">
       <button className="filter-toggle" onClick={onToggle}>
-        {isOpen ? 'HIDE FILTER' : 'FILTER BY LEVEL'}
-        <FilterIcon />
-      </button>
+        {isOpen ? FilterStatus.OPENED : FilterStatus.CLOSED}
 
+        <div className={`filter-toggle-icon-wrapper ${showRangePill ? 'active' : ''}`}>
+          {showRangePill && selectedRange && (
+            <span className="filter-range">{selectedRange}</span>
+          )}
+          <FilterIcon />
+        </div>
+      </button>
       {isOpen && (
         <div className="level-filters">
           {levels.map(level => (
-            <button
-              key={level}
-              className={`level-pill ${getLevelColor(level)} ${
-                selectedLevels.includes(level) ? 'selected' : ''
-              }`}
-              onClick={() => toggleLevel(level)}
-            >
-              {level}
+            <button key={level} onClick={() => toggleLevel(level)}>
+              <LevelIndicator
+                level={level}
+                selected={selectedLevels.includes(level)}
+              />
             </button>
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
-const FilterIcon = () => <img src={filterIcon} alt="Filter" width="24" height="24" />
+const FilterIcon = () => {
+  return (
+    <div className="filter-icon">
+      <img src={filterIcon} alt="Filter" width="24" height="24" />
+    </div>
+  );
+};

@@ -7,7 +7,7 @@ export interface Song {
   artist: string;
   title: string;
   level: number;
-  image: string;
+  images: string;
 }
 
 interface SongListProps {
@@ -58,9 +58,7 @@ export const SongList: React.FC<SongListProps> = ({
           />
         ))}
       </div>
-      
       {isLoading && <div className="loader">Loading...</div>}
-      
       <div ref={observerRef} style={{ height: '20px' }} />
     </div>
   );

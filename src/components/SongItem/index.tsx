@@ -1,4 +1,5 @@
 import React from 'react';
+import LevelIndicator from '../LevelIndicator';
 import './styles.css';
 
 export interface Song {
@@ -16,39 +17,26 @@ interface SongItemProps {
 }
 
 export const SongItem: React.FC<SongItemProps> = ({
-  song,
+  song: {
+    images,
+    title,
+    artist,
+    level
+  },
   isFavorite,
   onToggleFavorite,
 }) => {
-  const getLevelColor = (level: number) => {
-    if (level <= 5) return 'green';
-    if (level <= 10) return 'orange';
-    return 'red';
-  };
-
-  const getLevelProgress = (level: number) => {
-    return (level / 15) * 100;
-  };
-
-
   return (
     <article className="song-item">
-      <img src={song.images} alt={`${song.title} album cover`} />
+      <img src={images} alt={`${title} album cover`} />
       <div className="song-info">
-        <h3>{song.title}</h3>
-        <p>{song.artist}</p>
+        <h3>{title}</h3>
+        <p>{artist}</p>
       </div>
-      <div 
-        className={`level-badge ${getLevelColor(song.level)}`}
-        style={{ '--progress': `${getLevelProgress(song.level)}%` } as React.CSSProperties}
-      >
-        <span>
-          {song.level}
-        </span>
-      </div>
+      <LevelIndicator level={level} />
       <button
-        className={`favorite-btn ${isFavorite ? 'active' : ''}`}
         onClick={onToggleFavorite}
+        className={`favorite-btn ${isFavorite ? 'active' : ''}`}
         aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       >
         <HeartIcon filled={isFavorite} />
@@ -59,8 +47,8 @@ export const SongItem: React.FC<SongItemProps> = ({
 
 const HeartIcon: React.FC<{ filled?: boolean }> = ({ filled = false }) => (
   <svg 
-    width="32" 
-    height="32" 
+    width="24" 
+    height="24" 
     viewBox="0 0 24 24" 
     fill={filled ? '#dc001c' : 'none'}
     xmlns="http://www.w3.org/2000/svg"

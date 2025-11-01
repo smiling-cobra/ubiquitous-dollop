@@ -24,9 +24,9 @@ const Content = () => {
     <div className="app">
       <Hero onSearch={setSearch} searchQuery={search} />
       <FilterBar
+        isOpen={filterOpen}
         selectedLevels={selectedLevels}
         onLevelsChange={setSelectedLevels}
-        isOpen={filterOpen}
         onToggle={() => setFilterOpen(!filterOpen)}
       />
       <SongList

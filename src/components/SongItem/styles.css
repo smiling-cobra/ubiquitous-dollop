@@ -2,9 +2,16 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem;
-  background-color: var(--color-gray-darkest);
+  padding: .5rem;
   transition: background-color 0.2s ease;
+}
+
+.song-item:nth-child(even) {
+  background-color: var(--color-black);
+}
+
+.song-item:nth-child(odd) {
+  background-color: var(--color-gray-darkest);
 }
 
 .song-item:hover {
@@ -45,128 +52,6 @@
   max-width: 150px; /* TODO: Adjust later */
 }
 
-.level-badge {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
-  flex-shrink: 0;
-  position: relative;
-  background-color: #000000;
-  --progress: 0%;
-}
-
-.level-badge span {
-  color: var(--color-white);
-}
-
-.level-badge::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  padding: 3px;
-  background: #383635;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.level-badge::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  padding: 3px;
-  background: conic-gradient(
-    from 0deg,
-    currentColor 0%,
-    currentColor var(--progress),
-    transparent var(--progress)
-  );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.level-badge.green {
-  color: #6fc13e;
-}
-
-.level-badge.orange {
-  color: #ff8e00;
-}
-
-.level-badge.red {
-  color: #dc001c;
-}
-
-@media (min-width: 768px) {
-  .level-badge {
-    width: 56px;
-    height: 56px;
-    font-size: 1.125rem;
-  }
-  
-  .level-badge::before,
-  .level-badge::after {
-    inset: -4px;
-    padding: 4px;
-  }
-}
-
-@media (min-width: 768px) {
-  .level-badge {
-    width: 56px;
-    height: 56px;
-    font-size: 1.125rem;
-  }
-  
-  .level-badge::before,
-  .level-badge::after {
-    inset: -4px;
-    padding: 4px;
-  }
-}
-
-@media (min-width: 768px) {
-  .level-badge {
-    width: 56px;
-    height: 56px;
-    font-size: 1.125rem;
-  }
-  
-  .level-badge::before,
-  .level-badge::after {
-    inset: -4px;
-    padding: 4px;
-  }
-}
-
-@media (min-width: 768px) {
-  .level-badge {
-    width: 56px;
-    height: 56px;
-    font-size: 1.125rem;
-  }
-  
-  .level-badge::before,
-  .level-badge::after {
-    inset: -4px;
-    padding: 4px;
-  }
-}
-
 .favorite-btn {
   border: none;
   background: none;
@@ -197,12 +82,6 @@
 
   .song-info p {
     font-size: 1rem;
-  }
-
-  .level-badge {
-    width: 48px;
-    height: 48px;
-    font-size: 1.125rem;
   }
 
   .favorite-btn {

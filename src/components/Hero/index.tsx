@@ -2,6 +2,9 @@ import React from 'react';
 import searchIcon from '../../assets/icons/search.svg';
 import './styles.css';
 
+const MAIN_HERO_TEXT = 'NEW SONGS DELIVERED EVERY WEEK';
+const SECONDARY_HERO_TEXT = 'Here are the most recent additions to the Yousician App. Start playing today!'
+
 interface HeroProps {
   onSearch: (query: string) => void;
   searchQuery: string;
@@ -12,8 +15,8 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, searchQuery }) => {
     <header className="hero">
       <div className="hero-background" />
       <div className="hero-content">
-        <h1>NEW SONGS DELIVERED EVERY WEEK</h1>
-        <p>Here are the most recent additions to the Yousician App. Start playing today!</p>
+        <h1>{MAIN_HERO_TEXT}</h1>
+        <p>{SECONDARY_HERO_TEXT}</p>
         <div className="search-bar">
           <input
             type="text"
