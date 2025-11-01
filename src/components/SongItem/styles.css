@@ -3,21 +3,19 @@
   align-items: center;
   gap: 1rem;
   padding: 0.75rem;
-  background-color: #101010;
-  border-radius: 8px;
+  background-color: var(--color-gray-darkest);
   transition: background-color 0.2s ease;
 }
 
 .song-item:hover {
-  background-color: #1a1a1a;
+  background-color: var(--color-gray-darker);
 }
 
 .song-item img {
   width: 64px;
   height: 64px;
-  object-fit: cover;
-  border-radius: 4px;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .song-info {
@@ -26,25 +24,30 @@
 }
 
 .song-info h3 {
-  margin: 0 0 0.25rem 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  margin: 0 0 .5rem 0;
+  font-size: .8rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--color-white);
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 150px; /* TODO: Adjust later */
 }
 
 .song-info p {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.875rem;
-  color: #939393;
+  font-size: .775rem;
+  color: var(--color-white);
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 150px; /* TODO: Adjust later */
 }
 
 .level-badge {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -56,7 +59,44 @@
   flex-shrink: 0;
   position: relative;
   background-color: #000000;
-  border: 3px solid currentColor;
+  --progress: 0%;
+}
+
+.level-badge span {
+  color: var(--color-white);
+}
+
+.level-badge::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  padding: 3px;
+  background: #383635;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.level-badge::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(
+    from 0deg,
+    currentColor 0%,
+    currentColor var(--progress),
+    transparent var(--progress)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 .level-badge.green {
@@ -71,33 +111,73 @@
   color: #dc001c;
 }
 
+@media (min-width: 768px) {
+  .level-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 1.125rem;
+  }
+  
+  .level-badge::before,
+  .level-badge::after {
+    inset: -4px;
+    padding: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .level-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 1.125rem;
+  }
+  
+  .level-badge::before,
+  .level-badge::after {
+    inset: -4px;
+    padding: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .level-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 1.125rem;
+  }
+  
+  .level-badge::before,
+  .level-badge::after {
+    inset: -4px;
+    padding: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .level-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 1.125rem;
+  }
+  
+  .level-badge::before,
+  .level-badge::after {
+    inset: -4px;
+    padding: 4px;
+  }
+}
+
 .favorite-btn {
-  width: 40px;
-  height: 40px;
   border: none;
   background: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #939393;
+  color: var(--color-gray-medium);
   transition: color 0.2s ease, transform 0.1s ease;
   flex-shrink: 0;
   padding: 0;
-}
-
-.favorite-btn:hover {
-  color: #dc001c;
-  transform: scale(1.1);
-}
-
-.favorite-btn.active {
-  color: #dc001c;
-}
-
-.favorite-btn svg {
-  width: 24px;
-  height: 24px;
 }
 
 @media (min-width: 768px) {
