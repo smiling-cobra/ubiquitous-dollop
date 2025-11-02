@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.song-list.notification {
+.song-list .notification {
   color: var(--color-white);
   text-align: center;
 }
