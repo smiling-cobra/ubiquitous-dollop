@@ -10,6 +10,11 @@
   flex-direction: column;
 }
 
+.song-list.notification {
+  color: var(--color-white);
+  text-align: center;
+}
+
 .loader {
   text-align: center;
   padding: var(--spacing-lg);

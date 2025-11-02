@@ -3,6 +3,7 @@ import { SongItem } from '../SongItem';
 import type { Song } from '../../types';
 import './styles.css';
 
+const NOTIFICATION_TEXT = 'No songs found!'
 interface SongListProps {
   songs: Song[];
   favorites: Set<string>;
@@ -42,7 +43,7 @@ export const SongList: React.FC<SongListProps> = ({
   return (
     <div className="song-list-container">
       <div className="song-list">
-        {songs.map(song => (
+        {!songs.length && !isLoading ? <div className='notification'>{NOTIFICATION_TEXT}</div> : songs.map(song => (
           <SongItem
             key={song.id}
             song={song}
