@@ -1,14 +1,8 @@
 import React from 'react';
 import LevelIndicator from '../LevelIndicator';
+import { getPlaceholderImage } from '../../utils';
+import type { Song } from '../../types';
 import './styles.css';
-
-export interface Song {
-  id: string;
-  artist: string;
-  title: string;
-  level: number;
-  images: string;
-}
 
 interface SongItemProps {
   song: Song;
@@ -18,7 +12,6 @@ interface SongItemProps {
 
 export const SongItem: React.FC<SongItemProps> = ({
   song: {
-    images,
     title,
     artist,
     level
@@ -28,7 +21,7 @@ export const SongItem: React.FC<SongItemProps> = ({
 }) => {
   return (
     <article className="song-item">
-      <img src={images} alt={`${title} album cover`} />
+      <img src={getPlaceholderImage(level, title)} alt={`${title} album cover`} />
       <div className="song-info">
         <h3>{title}</h3>
         <p>{artist}</p>

@@ -1,14 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { SongItem } from '../SongItem';
+import type { Song } from '../../types';
 import './styles.css';
-
-export interface Song {
-  id: string;
-  artist: string;
-  title: string;
-  level: number;
-  images: string;
-}
 
 interface SongListProps {
   songs: Song[];

@@ -1,3 +1,15 @@
 .app {
     background-color: var(--color-black);
 }
+
+.main {
+    padding:  0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 0 10rem;
+  }
+}

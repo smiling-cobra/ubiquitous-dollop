@@ -1,14 +1,13 @@
 import React from "react";
 import filterIcon from "../../assets/icons/filter.svg";
 import LevelIndicator from "../LevelIndicator";
+import { LEVELS_TOTAL } from "../../constants";
 import "./styles.css";
 
 enum FilterStatus {
   OPENED = "HIDE FILTER",
   CLOSED = "FILTER BY LEVEL",
 }
-
-export const LEVELS_TOTAL = 15;
 
 interface FilterBarProps {
   isOpen: boolean;
@@ -38,21 +37,20 @@ export const FilterBar: React.FC<FilterBarProps> = ({
     [onLevelsChange, selectedLevels]
   );
 
-    const getSelectedRange = () => {
+  const hasSelectedLevels = selectedLevels.length > 0;
+  const showRangePill = hasSelectedLevels && !isOpen;
+
+  const selectedRange = React.useMemo(() => {
     if (selectedLevels.length === 0) return null;
     if (selectedLevels.length === 1) return selectedLevels[0];
 
     const sorted = [...selectedLevels].sort((a, b) => a - b);
     return `${sorted[0]} - ${sorted[sorted.length - 1]}`;
-  };
-
-  const hasSelectedLevels = selectedLevels.length > 0;
-  const showRangePill = hasSelectedLevels && !isOpen;
-  const selectedRange = getSelectedRange();
+  },[selectedLevels])
 
 
   return (
-    <section className="filter-bar">
+    <div className="filter-bar">
       <button className="filter-toggle" onClick={onToggle}>
         {isOpen ? FilterStatus.OPENED : FilterStatus.CLOSED}
 
@@ -75,7 +73,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           ))}
         </div>
       )}
-    </section>
+    </div>
   );
 };
 

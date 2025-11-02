@@ -8,4 +8,39 @@
   --color-green: #6fc13e;
   --color-orange: #ff8e00;
   --color-red: #dc001c;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  
+  --border-width: 2px;
+  --border-width-thin: 3px;
+  --border-radius-full: 50%;
+  --border-radius-pill: 50px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-transform: 0.1s ease;
+  
+  --font-family-primary: 'Montserrat', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8rem;
+  --font-size-md: 0.875rem;
+  --font-size-base: 1rem;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --icon-size-sm: 16px;
+  --icon-size-md: 24px;
+  --badge-size-sm: 24px;
+  --badge-size-md: 64px;
+  
+  --max-width-content: 1200px;
+  --max-width-hero: 800px;
+  --max-width-search: 600px;
+  
+  --z-index-sticky: 10;
+  --z-index-overlay: 2;
+  --z-index-background: 0;
 }

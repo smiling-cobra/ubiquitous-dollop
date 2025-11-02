@@ -6,6 +6,7 @@ import { SongList } from './components/SongList';
 import { useSongs } from './services/useSongs';
 import { useFavorites } from './services/useFavorites';
 import './App.css';
+import React from 'react';
 
 const queryClient = new QueryClient();
 
@@ -17,26 +18,33 @@ const Content = () => {
   const { data, fetchNextPage, hasNextPage, isLoading } = useSongs(search, selectedLevels);
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const songs = data?.pages.flatMap(page => page.songs) ?? [];
-  const favoriteSet = new Set(songs.filter(s => isFavorite(s.id)).map(s => s.id));
+  const songs = React.useMemo(() => {
+    return data?.pages.flatMap(page => page.songs) ?? [];
+  }, [data?.pages]);
+  
+  const favoriteSet = React.useMemo(() => {
+    return new Set(songs.filter(s => isFavorite(s.id)).map(s => s.id));
+  },[isFavorite, songs]);
 
   return (
     <div className="app">
       <Hero onSearch={setSearch} searchQuery={search} />
-      <FilterBar
-        isOpen={filterOpen}
-        selectedLevels={selectedLevels}
-        onLevelsChange={setSelectedLevels}
-        onToggle={() => setFilterOpen(!filterOpen)}
-      />
-      <SongList
-        songs={songs}
-        favorites={favoriteSet}
-        onToggleFavorite={toggleFavorite}
-        onLoadMore={() => fetchNextPage()}
-        hasMore={!!hasNextPage}
-        isLoading={isLoading}
-      />
+      <main className='main'>
+        <FilterBar
+          isOpen={filterOpen}
+          selectedLevels={selectedLevels}
+          onLevelsChange={setSelectedLevels}
+          onToggle={() => setFilterOpen(!filterOpen)}
+        />
+        <SongList
+          songs={songs}
+          favorites={favoriteSet}
+          onToggleFavorite={toggleFavorite}
+          onLoadMore={() => fetchNextPage()}
+          hasMore={!!hasNextPage}
+          isLoading={isLoading}
+        />
+      </main>
     </div>
   );
 }

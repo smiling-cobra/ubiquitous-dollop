@@ -1,10 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchFavorites, addFavorite, removeFavorite } from './api';
-
-export interface Favorite {
-  id: string;
-  songId: string;
-}
+import type { Favorite } from '../types';
 
 export const useFavorites = () => {
   const queryClient = useQueryClient();

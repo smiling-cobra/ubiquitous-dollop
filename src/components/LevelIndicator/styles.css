@@ -1,17 +1,17 @@
 .level-badge {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: var(--badge-size-sm);
+  height: var(--badge-size-sm);
+  border-radius: var(--border-radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   flex-shrink: 0;
   position: relative;
-  background-color: #000000;
+  background-color: var(--color-black);
   --progress: 0%;
 }
 
@@ -23,9 +23,9 @@
   content: '';
   position: absolute;
   inset: -3px;
-  border-radius: 50%;
-  padding: 3px;
-  background: #383635;
+  border-radius: var(--border-radius-full);
+  padding: var(--border-width);
+  background: var(--color-gray-dark);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
@@ -37,8 +37,8 @@
   content: '';
   position: absolute;
   inset: -3px;
-  border-radius: 50%;
-  padding: 3px;
+  border-radius: var(--border-radius-full);
+  padding: var(--border-width);
   background: conic-gradient(
     from 0deg,
     currentColor 0%,
@@ -53,40 +53,26 @@
 }
 
 .level-badge.green {
-  color: #6fc13e;
+  color: var(--color-green);
 }
 
 .level-badge.orange {
-  color: #ff8e00;
+  color: var(--color-orange);
 }
 
 .level-badge.red {
-  color: #dc001c;
+  color: var(--color-red);
 }
 
 .level-badge.selected {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .level-badge.selected span {
-    color: #000000;
+    color: var(--color-black);
 }
 
 .level-badge.selected::before,
 .level-badge.selected::after {
   opacity: 0;
-}
-
-@media (min-width: 768px) {
-  .level-badge {
-    width: 56px;
-    height: 56px;
-    font-size: 1.125rem;
-  }
-  
-  .level-badge::before,
-  .level-badge::after {
-    inset: -4px;
-    padding: 4px;
-  }
 }

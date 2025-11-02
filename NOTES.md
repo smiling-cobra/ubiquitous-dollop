@@ -13,3 +13,8 @@
 - `npm i` in `api` folder to install project dependencies for json-server
 - `npm run dev` to run the project
 - `npm run start-api` to run the json-server
+
+# Comments
+
+- urls of images aren't working so I decided to replace them with placeholders from this service https://ui-avatars.com/
+- 

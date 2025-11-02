@@ -1,15 +1,6 @@
 import React from "react";
-import { LEVELS_TOTAL } from "../Filter";
+import { EASY_LEVEL, LEVEL_COLOR, LEVELS_TOTAL, MEDIUM_LEVEL } from "../../constants";
 import "./styles.css";
-
-const EASY_LEVEL = 5;
-const MEDIUM_LEVEL = 10;
-
-enum LEVEL_COLOR {
-  EASY = "green",
-  MEDIUM = "orange",
-  HARD = "red",
-}
 
 interface LevelIndicatorProps {
   level: number;

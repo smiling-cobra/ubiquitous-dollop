@@ -1,9 +1,9 @@
 .song-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: .5rem;
-  transition: background-color 0.2s ease;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs);
+  transition: background-color var(--transition-fast);
 }
 
 .song-item:nth-child(even) {
@@ -19,8 +19,8 @@
 }
 
 .song-item img {
-  width: 64px;
-  height: 64px;
+  width: var(--badge-size-md);
+  height: var(--badge-size-md);
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -31,25 +31,25 @@
 }
 
 .song-info h3 {
-  margin: 0 0 .5rem 0;
-  font-size: .8rem;
-  font-weight: 600;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-white);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  max-width: 150px; /* TODO: Adjust later */
+  max-width: 150px;
 }
 
 .song-info p {
   margin: 0;
-  font-size: .775rem;
+  font-size: 0.775rem;
   color: var(--color-white);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 150px; /* TODO: Adjust later */
+  max-width: 150px;
 }
 
 .favorite-btn {
@@ -60,43 +60,18 @@
   align-items: center;
   justify-content: center;
   color: var(--color-gray-medium);
-  transition: color 0.2s ease, transform 0.1s ease;
+  transition: color var(--transition-fast), transform var(--transition-transform);
   flex-shrink: 0;
   padding: 0;
 }
 
 @media (min-width: 768px) {
   .song-item {
-    padding: 1rem;
-    gap: 1.5rem;
+    gap: var(--spacing-lg);
   }
 
-  .song-item img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .song-info h3 {
-    font-size: 1.125rem;
-  }
-
+  .song-info h3,
   .song-info p {
-    font-size: 1rem;
-  }
-
-  .favorite-btn {
-    width: 48px;
-    height: 48px;
-  }
-
-  .favorite-btn svg {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .song-item {
-    padding: 1.25rem;
+    max-width: 100%;
   }
 }

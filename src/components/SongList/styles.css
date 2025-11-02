@@ -1,11 +1,10 @@
 .song-list-container {
-  background-color: #000000;
+  background-color: var(--color-black);
   min-height: 100vh;
-  padding: 0 1rem;
 }
 
 .song-list {
-  max-width: 1200px;
+  max-width: var(--max-width-content);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -13,24 +12,8 @@
 
 .loader {
   text-align: center;
-  padding: 2rem;
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-}
-
-@media (min-width: 768px) {
-  .song-list-container {
-    padding: 3rem 2rem;
-  }
-
-  .song-list {
-    gap: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .song-list-container {
-    padding: 4rem 2rem;
-  }
+  padding: var(--spacing-lg);
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
 }
