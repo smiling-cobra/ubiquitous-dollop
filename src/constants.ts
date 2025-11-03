@@ -1,6 +1,6 @@
 const EASY_LEVEL = 5;
 const MEDIUM_LEVEL = 10;
-const LEVELS_TOTAL = 15;
+const LEVELS_TOTAL = 16;
 
 enum LEVEL_COLOR {
   EASY = "green",

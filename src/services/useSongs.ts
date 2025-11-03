@@ -10,6 +10,7 @@ export const useSongs = (search: string, levels: number[]) => {
       const loadedCount = allPages.length * 20;
       return loadedCount < lastPage.total ? loadedCount : undefined;
     },
+    retry: false,
     staleTime: Infinity,
     initialPageParam: 0,
   });

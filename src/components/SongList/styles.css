@@ -22,3 +22,11 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
 }
+
+.error {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--color-red);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+}

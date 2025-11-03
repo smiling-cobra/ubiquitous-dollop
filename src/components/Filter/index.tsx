@@ -1,7 +1,7 @@
 import React from "react";
-import filterIcon from "../../assets/icons/filter.svg";
 import LevelIndicator from "../LevelIndicator";
 import { LEVELS_TOTAL } from "../../constants";
+import { FilterIcon } from "./FilterIcon";
 import "./styles.css";
 
 enum FilterStatus {
@@ -23,7 +23,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   onLevelsChange,
 }) => {
   const levels = React.useMemo(() => {
-    return Array.from({ length: LEVELS_TOTAL }, (_, i) => i + 1);
+    return Array.from({ length: LEVELS_TOTAL }, (_, i) => i);
   }, []);
 
   const toggleLevel = React.useCallback(
@@ -73,14 +73,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           ))}
         </div>
       )}
-    </div>
-  );
-};
-
-const FilterIcon = () => {
-  return (
-    <div className="filter-icon">
-      <img src={filterIcon} alt="Filter" width="24" height="24" />
     </div>
   );
 };

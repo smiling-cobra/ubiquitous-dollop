@@ -3,7 +3,10 @@ import { SongItem } from '../SongItem';
 import type { Song } from '../../types';
 import './styles.css';
 
+const LOADING_TEXT = 'Loading...';
 const NOTIFICATION_TEXT = 'No songs found!'
+const ERROR_TEXT = 'Network error. Try again a bit later!';
+
 interface SongListProps {
   songs: Song[];
   favorites: Set<string>;
@@ -11,6 +14,7 @@ interface SongListProps {
   onLoadMore: () => void;
   hasMore: boolean;
   isLoading: boolean;
+  isError: boolean;
 }
 
 export const SongList: React.FC<SongListProps> = ({
@@ -20,6 +24,7 @@ export const SongList: React.FC<SongListProps> = ({
   onLoadMore,
   hasMore,
   isLoading,
+  isError
 }) => {
   const observerRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +57,8 @@ export const SongList: React.FC<SongListProps> = ({
           />
         ))}
       </div>
-      {isLoading && <div className="loader">Loading...</div>}
+      {isError && <div className="error">{ERROR_TEXT}</div>}
+      {isLoading && <div className="loader">{LOADING_TEXT}</div>}
       <div ref={observerRef} style={{ height: '20px' }} />
     </div>
   );

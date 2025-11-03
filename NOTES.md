@@ -16,5 +16,6 @@
 
 # Comments
 
-- urls of images aren't working so I decided to replace them with placeholders from this service https://ui-avatars.com/
-- 
+- In the second version of the assignment, I've noticed that there 16 and 15 (0 - 15) levels and I had to adjust the filter range accordingly. Given these changes, it's not possible to visualise filter according to the design mock ups.
+
+- I decided to show generic error message for both endpoints failures because I was short in time.

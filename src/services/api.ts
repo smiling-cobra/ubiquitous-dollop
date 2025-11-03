@@ -20,14 +20,22 @@ export const fetchSongs = async ({
   levels.forEach(level => params.append('level', level.toString()));
 
   const response = await fetch(`${API_BASE}/songs?${params}`);
+  
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status}`);
+  }
+
   const total = response.headers.get('X-Total-Count');
   const data = await response.json();
-  
+
   return { songs: data, total: parseInt(total || '0') };
 };
 
 export const fetchFavorites = async () => {
   const response = await fetch(`${API_BASE}/favorites`);
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status}`);
+  }
   return response.json();
 };
 
@@ -37,11 +45,17 @@ export const addFavorite = async (songId: string) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ songId }),
   });
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status}`);
+  }
   return response.json();
 };
 
 export const removeFavorite = async (favoriteId: string) => {
-  await fetch(`${API_BASE}/favorites/${favoriteId}`, {
+  const response = await fetch(`${API_BASE}/favorites/${favoriteId}`, {
     method: 'DELETE',
   });
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status}`);
+  }
 };

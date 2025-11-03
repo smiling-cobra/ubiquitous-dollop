@@ -15,8 +15,8 @@ const Content = () => {
   const [selectedLevels, setSelectedLevels] = useState<number[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useSongs(search, selectedLevels);
-  const { isFavorite, toggleFavorite } = useFavorites();
+  const { data, fetchNextPage, hasNextPage, isLoading, isError: isErrorInSongs } = useSongs(search, selectedLevels);
+  const { isFavorite, toggleFavorite, isError: isErrorInFavorites } = useFavorites();
 
   const songs = React.useMemo(() => {
     return data?.pages.flatMap(page => page.songs) ?? [];
@@ -43,6 +43,7 @@ const Content = () => {
           onLoadMore={() => fetchNextPage()}
           hasMore={!!hasNextPage}
           isLoading={isLoading}
+          isError={isErrorInSongs || isErrorInFavorites}
         />
       </main>
     </div>

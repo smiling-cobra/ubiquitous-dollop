@@ -1,5 +1,5 @@
 import React from 'react';
-import searchIcon from '../../assets/icons/search.svg';
+import { SearchIcon } from './SearchIcon';
 import './styles.css';
 
 const MAIN_HERO_TEXT = 'NEW SONGS DELIVERED EVERY WEEK';
@@ -32,5 +32,3 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, searchQuery }) => {
     </header>
   );
 };
-
-const SearchIcon = () => <img src={searchIcon} alt="Search" width="18" height="18" />

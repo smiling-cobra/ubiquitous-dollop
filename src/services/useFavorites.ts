@@ -5,7 +5,7 @@ import type { Favorite } from '../types';
 export const useFavorites = () => {
   const queryClient = useQueryClient();
 
-  const { data: favorites = [] } = useQuery<Favorite[]>({
+  const { data: favorites = [], isError } = useQuery<Favorite[]>({
     queryKey: ['favorites'],
     queryFn: fetchFavorites,
     staleTime: Infinity,
@@ -25,11 +25,9 @@ export const useFavorites = () => {
     },
   });
 
-  const isFavorite = (songId: string) =>
-    favorites.some(fav => fav.songId === songId);
+  const isFavorite = (songId: string) => (favorites || []).some(fav => fav.songId === songId);
 
-  const getFavoriteId = (songId: string) =>
-    favorites.find(fav => fav.songId === songId)?.id;
+  const getFavoriteId = (songId: string) => (favorites || []).find(fav => fav.songId === songId)?.id;
 
   const toggleFavorite = (songId: string) => {
     const favoriteId = getFavoriteId(songId);
@@ -40,5 +38,5 @@ export const useFavorites = () => {
     }
   };
 
-  return { favorites, isFavorite, toggleFavorite };
+  return { favorites, isFavorite, toggleFavorite, isError };
 };
